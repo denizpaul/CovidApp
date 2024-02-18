@@ -29,3 +29,7 @@ Welcome to the Demo Android Application built with **Kotlin** and following the 
   <img src="screenshots/dashboard.png" alt="Dashboard" width="250"/>
   <img src="screenshots/country_selection.png" alt="Country Selection" width="250"/>
 </p>
+
+## Recording:
+
+![Alt Text](recording/covid_app_recording.gif)
