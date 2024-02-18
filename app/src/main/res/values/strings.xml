@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CovidApp</string>
+    <string name="title_dashboard_covid">Dashboard</string>
+
+<!--    Error messages-->
+    <string name="error_could_not_connect">Could\'t connect to server</string>
+    <string name="error_no_signal">No Signal</string>
+    <string name="error_no_data">No data found</string>
+    <string name="failed_to_fetch">Failed to fetch data</string>
+
+<!--    Screen specific-->
+    <string name="dashboard_title">Covid Statistics</string>
+    <string name="world_stat">Worldwide Statistics</string>
+    <string name="confirmed_cases">Confirmed Cases</string>
+    <string name="deaths">Deaths</string>
+    <string name="fatality_rate">Fatality Rate</string>
+    <string name="default_country">Australia</string>
+    <string name="refresh">Refresh Stats</string>
+    <string name="last_updated_on">"Last updated on : "</string>
+</resources>

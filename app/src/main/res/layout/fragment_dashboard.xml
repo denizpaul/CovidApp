@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.dennis.covidapp.ui.viewmodel.CovidViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <!-- Title Text: COVID DATA -->
+        <TextView
+            android:id="@+id/pageTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashboard_title"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <!-- Subtext: Current Date -->
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="February 00, 0000"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@id/pageTitleTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="4dp"
+            android:paddingLeft="8dp"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewWorld"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginTop="16dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cLayoutTopCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- Title - world stat-->
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/world_stat"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryText"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!-- Border Line -->
+                <View
+                    android:id="@+id/titleBorder"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/light_blue"
+                    app:layout_constraintTop_toBottomOf="@id/titleTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp" />
+
+
+                <!-- Confirmed cases Section -->
+                <TextView
+                    android:id="@+id/topLeftValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="22sp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/colorPrimaryText"
+                    app:layout_constraintTop_toBottomOf="@id/titleBorder"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/topLeftStringTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirmed_cases"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimaryText"
+                    app:layout_constraintTop_toBottomOf="@id/topLeftValueTextView"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!-- Death Section -->
+                <TextView
+                    android:id="@+id/topRightValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="22sp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/orange_200"
+                    app:layout_constraintTop_toBottomOf="@id/titleBorder"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/topRightStringTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deaths"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimaryText"
+                    app:layout_constraintTop_toBottomOf="@id/topRightValueTextView"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Fatality rate Section -->
+                <TextView
+                    android:id="@+id/leftBottomValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="22sp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#EDCB67"
+                    app:layout_constraintTop_toBottomOf="@id/topLeftStringTextView"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/leftBottomStringTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fatality_rate"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimaryText"
+                    app:layout_constraintTop_toBottomOf="@id/leftBottomValueTextView"
+                    android:paddingBottom="12dp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+<!--        Country specific section-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginTop="16dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:cardBackgroundColor="@color/colorSecondary"
+            app:layout_constraintTop_toBottomOf="@id/cardViewWorld"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cLayoutBottomCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- Title -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/countryPicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_country"
+                    android:textSize="16sp"
+                    android:drawableEnd="@drawable/baseline_arrow_drop_down_24"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/colorSecondaryText"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!-- Border Line -->
+                <View
+                    android:id="@+id/titleBorderCountry"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    app:layout_constraintTop_toBottomOf="@id/countryPicker"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp" />
+
+
+                <!-- Confirmed case Section -->
+                <TextView
+                    android:id="@+id/topLeftValueTextViewCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="22sp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/colorSecondaryText"
+                    app:layout_constraintTop_toBottomOf="@id/titleBorderCountry"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/topLeftStringTextViewCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirmed_cases"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondaryText"
+                    app:layout_constraintTop_toBottomOf="@id/topLeftValueTextViewCountry"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!-- Death Section -->
+                <TextView
+                    android:id="@+id/topRightValueTextViewCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="22sp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/orange_200"
+                    app:layout_constraintTop_toBottomOf="@id/titleBorderCountry"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/topRightStringTextViewCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deaths"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondaryText"
+                    app:layout_constraintTop_toBottomOf="@id/topRightValueTextViewCountry"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Fatality rate Section -->
+                <TextView
+                    android:id="@+id/leftBottomValueTextViewCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="22sp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#EDCB67"
+                    app:layout_constraintTop_toBottomOf="@id/topLeftStringTextViewCountry"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/leftBottomStringTextViewCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fatality_rate"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondaryText"
+                    app:layout_constraintTop_toBottomOf="@id/leftBottomValueTextViewCountry"
+                    android:paddingBottom="12dp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+<!--        Refresh btn-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/refreshButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:background="@drawable/button_rounded_bg"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/refresh"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewCountry" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
