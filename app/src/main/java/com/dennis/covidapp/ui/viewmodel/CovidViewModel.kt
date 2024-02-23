@@ -15,6 +15,7 @@ import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
+import java.text.DecimalFormat
 import javax.inject.Inject
 
 class CovidViewModel @Inject constructor(
@@ -110,6 +111,11 @@ class CovidViewModel @Inject constructor(
             }
         }
 
+    }
+
+    fun formatFatalityRatePercentage(fatalityRate: Double): String {
+        val formattedPercentage = DecimalFormat("#.##").format(fatalityRate * 100)
+        return "$formattedPercentage%"
     }
 
 }

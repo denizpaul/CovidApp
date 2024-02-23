@@ -71,7 +71,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                             val covidData = it.covidData ?: return@with // Safety check for nullability
                             topLeftValueTextView.text = covidData.confirmed.toString()
                             topRightValueTextView.text = covidData.deaths.toString()
-                            leftBottomValueTextView.text = "${(covidData.fatalityRate!! * 100).toInt()}%" // Convert to Int for better readability
+                            leftBottomValueTextView.text = covidViewModel.formatFatalityRatePercentage(covidData.fatalityRate ?: 0.0)
                             dateTextView.text = resources.getString(R.string.last_updated_on) + covidData.lastUpdate
                             cLayoutTopCard.hideSkeleton()
                         }
@@ -93,12 +93,11 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             when (screenState) {
                 is ScreenState.Success<*> -> {
                     screenState.data?.let {
-                        val df = DecimalFormat("#.##")
                         val covidData = it.covidData ?: return@let
                         with(binding) {
                             topLeftValueTextViewCountry.text = covidData.confirmed.toString()
                             topRightValueTextViewCountry.text = covidData.deaths.toString()
-                            leftBottomValueTextViewCountry.text = "${df.format(covidData.fatalityRate!! * 100)}%"
+                            leftBottomValueTextViewCountry.text = covidViewModel.formatFatalityRatePercentage(covidData.fatalityRate ?: 0.0)
                         }
                         hideCountryDataLoading()
                     }
