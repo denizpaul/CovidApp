@@ -12,12 +12,14 @@ import com.dennis.covidapp.domain.usecases.CovidReportUseCase
 import com.dennis.covidapp.util.ScreenState
 import com.dennis.covidapp.domain.models.RegionsResponse
 import com.google.gson.JsonSyntaxException
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 import java.text.DecimalFormat
 import javax.inject.Inject
 
+@HiltViewModel
 class CovidViewModel @Inject constructor(
     application: Application,
     private val covidReportUseCase: CovidReportUseCase,

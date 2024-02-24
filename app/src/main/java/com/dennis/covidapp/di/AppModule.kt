@@ -1,8 +1,11 @@
 package com.dennis.covidapp.di
 
+import android.app.Application
 import android.content.Context
+import android.content.res.Resources
 import com.dennis.covidapp.data.api.CovidApi
 import com.dennis.covidapp.data.repository.CovidRepository
+import com.dennis.covidapp.domain.usecases.CovidReportUseCase
 import com.dennis.covidapp.util.ApiConstants.Companion.COVID_API_BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -96,6 +99,21 @@ object AppModule {
     @Singleton
     fun provideCovidRepository(api: CovidApi): CovidRepository {
         return CovidRepository(api)
+    }
+
+    @Provides
+    fun provideCovidReportUseCase(repository: CovidRepository): CovidReportUseCase {
+        return CovidReportUseCase(repository)
+    }
+
+    @Provides
+    fun provideContext(application: Application): Context {
+        return application.applicationContext
+    }
+
+    @Provides
+    fun provideResources(context: Context): Resources {
+        return context.resources
     }
 
 }

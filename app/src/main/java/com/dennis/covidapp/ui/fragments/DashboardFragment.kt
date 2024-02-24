@@ -4,29 +4,35 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.dennis.covidapp.R
 import com.dennis.covidapp.databinding.FragmentDashboardBinding
 import com.dennis.covidapp.ui.viewmodel.CovidViewModel
 import com.dennis.covidapp.ui.DashboardActivity
+import com.dennis.covidapp.ui.viewmodel.CovidViewModelProviderFactory
 import com.dennis.covidapp.util.ScreenState
 import com.google.android.material.snackbar.Snackbar
 import com.hbb20.countrypicker.dialog.launchCountryPickerDialog
 import com.hbb20.countrypicker.models.CPCountry
+import dagger.hilt.android.AndroidEntryPoint
 import koleton.api.hideSkeleton
 import koleton.api.loadSkeleton
 import java.text.DecimalFormat
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     private lateinit var countryIsoList: Array<String?>
-    private lateinit var covidViewModel: CovidViewModel
     lateinit var binding: FragmentDashboardBinding
+
+    @Inject
+    lateinit var viewModelFactory: CovidViewModelProviderFactory
+    private val covidViewModel: CovidViewModel by viewModels() {viewModelFactory}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDashboardBinding.bind(view)
-
-        covidViewModel = (activity as DashboardActivity).covidViewModel
 
         //Worldwide covid data observer
         observeGlobalCovidData()

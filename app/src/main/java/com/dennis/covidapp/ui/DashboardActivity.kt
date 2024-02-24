@@ -16,7 +16,6 @@ import javax.inject.Inject
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
-    lateinit var covidViewModel: CovidViewModel
 
     @Inject
     lateinit var covidApi: CovidApi
@@ -26,12 +25,6 @@ class DashboardActivity : AppCompatActivity() {
 
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val covidRepository = CovidRepository(covidApi)
-        val covidReportUseCase = CovidReportUseCase(covidRepository)
-        val covidViewModelProviderFactory = CovidViewModelProviderFactory(application, covidReportUseCase, resources)
-        covidViewModel = ViewModelProvider(this, covidViewModelProviderFactory).get(CovidViewModel::class.java)
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
